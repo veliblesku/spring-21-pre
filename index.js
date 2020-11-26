@@ -120,15 +120,14 @@ const run = async () => {
 
 
 
+run()
 
-
-/* setInterval(function () { 
+setInterval(function () { 
     run()
-}, 300000);  */
+}, 300000); 
 
 console.log(jackets.length)
 app.get('/api/', function (req, res) {
-    run()
     //merge(jackets, man)
 })
 app.get('/api/jackets', function (req, res) {
