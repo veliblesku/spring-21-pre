@@ -119,33 +119,34 @@ const run = async () => {
 }
 
 
-run()
 
 
-setInterval(function () { 
+
+/* setInterval(function () { 
     run()
-}, 300000); 
+}, 300000);  */
 
 console.log(jackets.length)
 app.get('/api/', function (req, res) {
+    run()
     //merge(jackets, man)
 })
 app.get('/api/jackets', function (req, res) {
-    console.log(jackets)
+    //console.log(jackets)
     res.json(jackets)
 })
 app.get('/api/shirts', function (req, res) {
-    console.log(shirts)
+    //console.log(shirts)
     res.json(shirts)
 })
 app.get('/api/accessories', function (req, res) {
-    console.log(accessories)
+    //console.log(accessories)
     res.json(accessories)
 })
   
 app.get('/api/man', function(req, res){
-    console.log(typeof manufacturers)
-    console.log(man)
+    //console.log(typeof manufacturers)
+    //console.log(man)
     res.json(man)
 })
 const PORT = process.env.PORT || 3002
