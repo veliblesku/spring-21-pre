@@ -9,6 +9,7 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 app.use(express.static('build'))
+
 const url = 'https://bad-api-assignment.reaktor.com/products/jackets'
 
 
