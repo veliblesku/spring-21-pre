@@ -3,6 +3,7 @@ var parser = require('fast-xml-parser');
 const express = require('express')
 const app = express()
 const axios = require('axios');
+const axiosRetry = require('axios-retry');
 
 const cors = require('cors')
 
@@ -77,14 +78,13 @@ const getJackets = async () => {
 
 const getAvailability = async () => {
     try {
-        console.log("voijuma")
-        let s = 1;
+        let s = 0;
         man = []
         for(let i of manufacturers1) {
             const resp = await axios.get('https://bad-api-assignment.reaktor.com/availability/' + i)
             man = man.concat(resp.data.response)
-            console.log(man.length)
-            console.log(resp.status, resp.statusText, resp.headers)
+/*             console.log(man.length)
+            console.log(resp.status, resp.statusText, resp.headers['x-error-modes-active']) */
             // {headers: {"x-force-error-mode":all}}
         }
         man = man.map(function(a) {
@@ -107,7 +107,6 @@ const run = async () => {
         jackets = await merge(jackets, man);
         accessories = await merge(accessories, man);
         shirts = await merge(shirts, man);
-        console.log(jackets)
     } catch (err){
         console.error(err)
     }
@@ -115,7 +114,7 @@ const run = async () => {
 
 
 
-run()
+
 
 setInterval(function () { 
     run()
@@ -123,7 +122,6 @@ setInterval(function () {
 
 console.log(jackets.length)
 app.get('/api/', function (req, res) {
-    //merge(jackets, man)
 })
 app.get('/api/jackets', function (req, res) {
     res.json(jackets)
