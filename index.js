@@ -80,18 +80,13 @@ const getAvailability = async () => {
         console.log("voijuma")
         let s = 1;
         man = []
-        for(i of manufacturers1) {
+        for(let i of manufacturers1) {
             const resp = await axios.get('https://bad-api-assignment.reaktor.com/availability/' + i)
-            //console.log(resp);
             man = man.concat(resp.data.response)
             console.log(man.length)
-            //console.log("TERVE " + man.length)
-            //console.log("TERVE" + resp.headers.connection)
             console.log(resp.status, resp.statusText, resp.headers)
-        // {headers: {"x-force-error-mode":all}}
-
+            // {headers: {"x-force-error-mode":all}}
         }
-
         man = man.map(function(a) {
             a.id = a.id.toLowerCase();
             return a;
@@ -131,21 +126,16 @@ app.get('/api/', function (req, res) {
     //merge(jackets, man)
 })
 app.get('/api/jackets', function (req, res) {
-    //console.log(jackets)
     res.json(jackets)
 })
 app.get('/api/shirts', function (req, res) {
-    //console.log(shirts)
     res.json(shirts)
 })
 app.get('/api/accessories', function (req, res) {
-    //console.log(accessories)
     res.json(accessories)
 })
   
 app.get('/api/man', function(req, res){
-    //console.log(typeof manufacturers)
-    //console.log(man)
     res.json(man)
 })
 const PORT = process.env.PORT || 3002

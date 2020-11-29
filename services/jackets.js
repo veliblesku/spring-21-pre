@@ -1,4 +1,4 @@
-import axios from 'axios'
+/* import axios from 'axios'
 const baseUrl = 'https://bad-api-assignment.reaktor.com/jackets'
 
 const getAll = () => {
@@ -7,4 +7,4 @@ const getAll = () => {
 }
 
 
-export default { getAll }
+export default { getAll } */
